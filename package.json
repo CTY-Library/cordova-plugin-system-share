@@ -1,0 +1,19 @@
+{
+  "name": "cordova-plugin-system-share",
+  "version": "1.0.1",
+  "description": "cordova wecom  企业微信分享",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lounai-chen/cordova-plugin-system-share.git"
+  },
+  "author": "lounai-chen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lounai-chen/cordova-plugin-system-share/issues"
+  },
+  "homepage": "https://github.com/lounai-chen/cordova-plugin-system-share#readme"
+}
