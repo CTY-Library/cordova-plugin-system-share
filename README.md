@@ -31,10 +31,40 @@ SystemSharePlugin.share_link('title, 'webpageUrl','package_name','ui_page',funct
  ui_page = com.tencent.wework.launch.QyDiskShareLaunchActivity 分享到文件磁盘 
 
  ui_page = com.tencent.wework.launch.AppSchemeLaunchActivity 分享到联系人列表  
- 
+
 
 ```
+
+### 3.备注
+``` 
+app/res目录下新建provider_paths.xml文件
+
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <external-path
+        name="external_files"
+        path="Hello_Word/" />
+    <external-path
+        name="external_storage_root"
+        path="." />
+    <root-path name="root_path" path="."/>
+</paths>
  
+
+
+清单文件AndroidManifest.xml添加
+
+<provider android:authorities="${applicationId}.fileProvider" android:exported="false" android:grantUriPermissions="true" android:name="androidx.core.content.FileProvider" tools:replace="android:authorities">
+        <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/provider_paths" />
+</provider> 
+
+
+``` 
+
+
+### 4.参考链接 
+
+https://blog.csdn.net/qq_34536167/article/details/109403696 
 
  
   

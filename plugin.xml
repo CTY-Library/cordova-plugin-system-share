@@ -16,6 +16,13 @@
 
         <source-file src="src/android/SystemSharePlugin.java" target-dir="src/com/plugin/huayu/noahSystemSharePlugin" /> 
 
+
+        <config-file parent="/*" target="AndroidManifest.xml">         
+            <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+            <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+            <uses-permission android:name="android.permission.INTERNET" />
+        </config-file>  
+
     </platform>
 
 
