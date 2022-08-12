@@ -1,12 +1,13 @@
 package  com.plugin.huayu.noahSystemSharePlugin;
 
 
-
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.content.ComponentName;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -17,9 +18,7 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.RequiresApi;
 import android.util.Base64;
-import android.util.Log;
-
- 
+import android.util.Log; 
 
 
 import org.apache.cordova.CallbackContext;
@@ -60,8 +59,7 @@ public class SystemSharePlugin extends CordovaPlugin {
         PackageManager.GET_META_DATA);
     } catch (PackageManager.NameNotFoundException e) {
       e.printStackTrace();
-    }
- 
+    } 
   }
 
 
@@ -69,19 +67,25 @@ public class SystemSharePlugin extends CordovaPlugin {
   @Override
   public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
     mCallbackContext = callbackContext;    //拿到回调对象并保存
- 
-
+    //package_name = com.tencent.wework 企业微信
+    //ui_page = com.tencent.wework.launch.QyDiskShareLaunchActivity 分享到文件磁盘
+    //ui_page = com.tencent.wework.launch.AppSchemeLaunchActivity 分享到联系人列表
     if (action.equals("share_txt")) {
 
       String title = args.getString(0);
       String msg = args.getString(1);
       String package_name = args.getString(2);
+      String ui_page = args.getString(3);
    
       Intent textIntent = new Intent(Intent.ACTION_SEND);
       textIntent.putExtra(Intent.EXTRA_TEXT, msg);
       textIntent.setType("text/plain");
       if(package_name.length()>0) {
         textIntent.setPackage(package_name);
+        if(ui_page.length()>0) {
+          ComponentName comp = new ComponentName(package_name,ui_page);
+          textIntent.setComponent(comp);
+        }
       }
 
       cordova.getActivity().runOnUiThread(new Runnable() {
@@ -102,6 +106,7 @@ public class SystemSharePlugin extends CordovaPlugin {
       String path = args.getString(1);
       String img_name = args.getString(2);
       String package_name = args.getString(3);
+      String ui_page = args.getString(4);
 
       path = savePic(path,this.cordova.getContext(),1002,img_name);
       
@@ -110,6 +115,10 @@ public class SystemSharePlugin extends CordovaPlugin {
       imageIntent.setType("image/jpeg");
       if(package_name.length()>0) {
         imageIntent.setPackage(package_name);
+        if(ui_page.length()>0) {
+          ComponentName comp = new ComponentName(package_name,ui_page);
+          imageIntent.setComponent(comp);
+        }
       }
 
       cordova.getActivity().runOnUiThread(new Runnable() {
@@ -130,12 +139,17 @@ public class SystemSharePlugin extends CordovaPlugin {
       String title =  args.getString(0);     
       String webpageUrl = args.getString(1);
       String package_name = args.getString(2);
-   
+      String ui_page = args.getString(3);
+
       Intent textIntent = new Intent(Intent.ACTION_SEND);
       textIntent.putExtra(Intent.EXTRA_TEXT, title+'\n'+webpageUrl);
       textIntent.setType("text/plain");
       if(package_name.length()>0) {
         textIntent.setPackage(package_name);
+        if(ui_page.length()>0) {
+          ComponentName comp = new ComponentName(package_name,ui_page);
+          textIntent.setComponent(comp);
+        }
       }
 
       cordova.getActivity().runOnUiThread(new Runnable() {
