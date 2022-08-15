@@ -60,31 +60,34 @@ static NSString *const kShareOptionIPadCoordinates = @"iPadCoordinates";
 ];
 }
 
-- (void)share_link:(CDVInvokedUrlCommand*)command {
+ - (void)share_link:(CDVInvokedUrlCommand*)command {
   [self shareInternal:command
           withOptions:@{
                         kShareOptionMessage: [command.arguments objectAtIndex:0],
                         kShareOptionSubject: [command.arguments objectAtIndex:0],
-                        kShareOptionFiles: [],
+                        kShareOptionFiles: @"",
                         kShareOptionUrl: [command.arguments objectAtIndex:1],
-                        kShareOptionIPadCoordinates: []
+                        kShareOptionIPadCoordinates: @""
                       }
     isBooleanResponse:YES
 ];
 }
 
 - (void)share_image:(CDVInvokedUrlCommand*)command {
-  [self shareInternal:command
+    NSMutableArray *arry =[[NSMutableArray alloc]init];
+    [arry addObject:[command.arguments objectAtIndex:1]];
+    [self shareInternal:command
           withOptions:@{
                         kShareOptionMessage: [command.arguments objectAtIndex:0],
                         kShareOptionSubject: [command.arguments objectAtIndex:0],
-                        kShareOptionFiles: [],
-                        kShareOptionUrl: [command.arguments objectAtIndex:1],
-                        kShareOptionIPadCoordinates: []
+                        kShareOptionFiles: arry,
+                        kShareOptionUrl: @"",
+                        kShareOptionIPadCoordinates:@""
                       }
     isBooleanResponse:YES
 ];
 }
+
 
 
 - (void)shareWithOptions:(CDVInvokedUrlCommand*)command {
@@ -122,7 +125,7 @@ static NSString *const kShareOptionIPadCoordinates = @"iPadCoordinates";
     [activityItems addObject:message];
     }
 
-    if (filenames != (id)[NSNull null] && filenames != nil && filenames.count > 0) {
+    if (filenames != @"" && filenames != (id)[NSNull null] && filenames != nil && filenames.count > 0) {
       NSMutableArray *files = [[NSMutableArray alloc] init];
       for (NSString* filename in filenames) {
         NSObject *file = [self getImage:filename];
