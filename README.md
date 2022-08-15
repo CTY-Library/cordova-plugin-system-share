@@ -35,15 +35,45 @@ SystemSharePlugin.share_link('title, 'webpageUrl','package_name','ui_page',funct
 
 ```
 
+``` 
+使用方法: 案例
+ 
+ shareTxtWeCom(){
+	  SystemSharePlugin.share_link('title标题','https://www.xxx','com.tencent.wework','com.tencent.wework.launch.AppSchemeLaunchActivity',
+		function(s){   },function(e){alert('error: '+e)}); 
+	  
+  }
+
+shareImgWeCom(){
+	SystemSharePlugin.share_image('title','https://xxx/home_baby.png','home_baby.png','com.tencent.wework','com.tencent.wework.launch.AppSchemeLaunchActivity',
+		function(s){  },function(e){alert('error: '+e)}); 
+}
+
+shareTxtSystem(){
+	
+	SystemSharePlugin.share_link('title标题','https://www.xxx','','',
+		function(s){   },function(e){alert('error: '+e)}); 
+}
+
+shareImgStstem(){
+	
+	SystemSharePlugin.share_image('分享图片','https://xxx/mature_family.png','mature_family.png','','',
+		function(s){   },function(e){alert('error: '+e)}); 
+}
+
+``` 
+
 ### 3.备注
 ``` 
-app/res目录下新建provider_paths.xml文件
+安卓: 
+
+app/res目录下新建provider_paths.xml文件 
 
 <?xml version="1.0" encoding="utf-8"?>
 <paths>
     <external-path
         name="external_files"
-        path="Hello_Word/" />
+        path="." />
     <external-path
         name="external_storage_root"
         path="." />
