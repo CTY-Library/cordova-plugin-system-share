@@ -32,6 +32,8 @@ SystemSharePlugin.share_link('title, 'webpageUrl','package_name','ui_page',funct
 
  ui_page = com.tencent.wework.launch.AppSchemeLaunchActivity 分享到联系人列表  
 
+ (package_name,ui_page参数只对安卓有效)
+
 
 ```
 
@@ -84,6 +86,8 @@ app/res目录下新建provider_paths.xml文件
 
 清单文件AndroidManifest.xml添加
 
+xmlns:tools="http://schemas.android.com/tools"
+
 <provider android:authorities="${applicationId}.fileProvider" android:exported="false" android:grantUriPermissions="true" android:name="androidx.core.content.FileProvider" tools:replace="android:authorities">
         <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/provider_paths" />
 </provider> 
@@ -95,6 +99,8 @@ app/res目录下新建provider_paths.xml文件
 ### 4.参考链接 
 
 https://blog.csdn.net/qq_34536167/article/details/109403696 
+https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin 
+
 
  
   

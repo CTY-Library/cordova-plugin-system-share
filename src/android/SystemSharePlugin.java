@@ -259,7 +259,7 @@ public class SystemSharePlugin extends CordovaPlugin {
    */
   private static File getFileUrl(Context context) {
     File root = context.getFilesDir();
-    File dir = new File(root, "hello/");
+    File dir = new File(root, "Download/");
     if (!dir.exists()) {
       //创建失败
       if (!dir.mkdir()) {

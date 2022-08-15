@@ -1,15 +1,32 @@
-//
-//  SystemSharePlugin.h
-//   
-//
-//  Created by noah-chen on 2022/7/8.
-//
- 
-#import <UIKit/UIKit.h>
+#import <Cordova/CDV.h>
+#import <MessageUI/MFMailComposeViewController.h>
 
-@interface SystemSharePlugin : UIViewController
- 
-   - (void) sendCmd : (NSString *)msg;
+@interface SystemSharePlugin : CDVPlugin <UIPopoverControllerDelegate, MFMailComposeViewControllerDelegate, UIDocumentInteractionControllerDelegate>
+
+@property (nonatomic, strong) MFMailComposeViewController *globalMailComposer;
+@property (nonatomic, strong) UIDocumentInteractionController * documentInteractionController;
+@property (retain) NSString * tempStoredFile;
+@property (retain) CDVInvokedUrlCommand * command;
+
+- (void)available:(CDVInvokedUrlCommand*)command;
+- (void)setIPadPopupCoordinates:(CDVInvokedUrlCommand*)command;
+- (void)share:(CDVInvokedUrlCommand*)command;
+- (void)shareWithOptions:(CDVInvokedUrlCommand*)command;
+- (void)canShareVia:(CDVInvokedUrlCommand*)command;
+- (void)canShareViaEmail:(CDVInvokedUrlCommand*)command;
+- (void)shareVia:(CDVInvokedUrlCommand*)command;
+- (void)shareViaTwitter:(CDVInvokedUrlCommand*)command;
+- (void)shareViaFacebook:(CDVInvokedUrlCommand*)command;
+- (void)shareViaFacebookWithPasteMessageHint:(CDVInvokedUrlCommand*)command;
+- (void)shareViaWhatsApp:(CDVInvokedUrlCommand*)command;
+- (void)shareViaSMS:(CDVInvokedUrlCommand*)command;
+- (void)shareViaEmail:(CDVInvokedUrlCommand*)command;
+- (void)shareViaInstagram:(CDVInvokedUrlCommand*)command;
+
+- (void)saveToPhotoAlbum:(CDVInvokedUrlCommand*)command;
+
+
+- (void)share_link:(CDVInvokedUrlCommand*)command;
+- (void)share_image:(CDVInvokedUrlCommand*)command;
 
 @end
-
