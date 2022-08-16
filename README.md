@@ -88,11 +88,11 @@ app/res目录下新建provider_paths.xml文件
 
 xmlns:tools="http://schemas.android.com/tools"
 
-<provider android:authorities="${applicationId}.fileProvider" android:exported="false" android:grantUriPermissions="true" android:name="androidx.core.content.FileProvider" tools:replace="android:authorities">
+<provider android:authorities="${applicationId}.provider" android:exported="false" android:grantUriPermissions="true" android:name="androidx.core.content.FileProvider" tools:replace="android:authorities">
         <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/provider_paths" />
 </provider> 
 
-
+(如果已经存在,就不用再添加)
 ``` 
 
 

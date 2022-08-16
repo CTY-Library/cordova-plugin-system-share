@@ -248,8 +248,8 @@ public class SystemSharePlugin extends CordovaPlugin {
    * 返回uri
    */
   private static Uri getUriForFile(Context context, File file) {
-    //应用包名.fileProvider
-    String authority = context.getPackageName().concat(".fileProvider");
+    //应用包名.provider
+    String authority = context.getPackageName().concat(".provider");
     Uri fileUri = FileProvider.getUriForFile(context, authority, file);
     return fileUri;
   }
