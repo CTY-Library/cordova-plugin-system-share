@@ -57,7 +57,7 @@ shareTxtSystem(){
 		function(s){   },function(e){alert('error: '+e)}); 
 }
 
-shareImgStstem(){
+shareImgSystem(){
 	
 	SystemSharePlugin.share_image('分享图片','https://xxx/mature_family.png','mature_family.png','','',
 		function(s){   },function(e){alert('error: '+e)}); 
