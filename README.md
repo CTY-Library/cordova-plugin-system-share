@@ -63,6 +63,16 @@ shareImgSystem(){
 		function(s){   },function(e){alert('error: '+e)}); 
 }
 
+//IOS分享图片
+  share_image_ios(){
+
+    SystemSharePlugin.share_image_ios('https://img-blog.csdnimg.cn/20190319154354606.png').then(() => {
+      // Success!
+    }).catch(() => {
+      // Error!
+
+    });
+  }
 ``` 
 
 ### 3.备注
